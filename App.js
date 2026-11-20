@@ -32,7 +32,8 @@ export default function App() {
   const loadTodos = async () => {
     try {
       setLoading(true);
-      // TODO 3a: YOUR CODE HERE
+      const data = await fetchTodos();
+setTodos(data);
     } catch (error) {
       Alert.alert("Error", "Could not load todos: " + error.message);
     } finally {
@@ -40,7 +41,9 @@ export default function App() {
     }
   };
 
-  // TODO 3b: YOUR useEffect HERE
+  useEffect(() => {
+  loadTodos();
+}, []);
 
   // ---------- Save data (Part 3) ----------
   // TODO 4: Make the Add button save a todo.
@@ -49,12 +52,15 @@ export default function App() {
   // TODO 7: After saving, clear the input box with setText("")
   //   and reload the list by calling loadTodos().
   const handleAdd = async () => {
-    // TODO 4a: YOUR CODE HERE
+    if (text.trim() === "") {
+  return;
+}
 
     try {
-      // TODO 4b: YOUR CODE HERE
+      await addTodo(text.trim());
 
-      // TODO 7: YOUR CODE HERE
+      setText("");
+await loadTodos();
     } catch (error) {
       Alert.alert("Error", "Could not save todo: " + error.message);
     }
