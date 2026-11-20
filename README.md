@@ -174,3 +174,29 @@ service cloud.firestore {
 | List is empty but console has data        | Collection name mismatch (`todos` vs `Todos`)                  |
 | `Unable to resolve "firebase/firestore"`  | Run `npm install firebase`, then restart with `npx expo start -c` |
 | Each item warns about missing `key`       | Use `keyExtractor={(item) => item.id}`                         |
+## 7. Lab Completion
+
+The MAD Week 10 Todo App has been completed and tested.
+
+### Features implemented
+- Save new todos to Firebase Firestore using `addDoc()`.
+- Read saved todos using `getDocs()`.
+- Display todos using React Native `FlatList`.
+- Load todos when the app opens using `useEffect()`.
+- Display a loading indicator while fetching data.
+- Display "No todos yet" when the collection is empty.
+- Clear the input and refresh the list after adding a todo.
+- Prevent empty todos from being saved.
+- Todos persist after closing and reopening the app.
+
+### Testing completed
+- Successfully added multiple todos.
+- Confirmed todos appear in Firestore.
+- Confirmed todos remain after restarting the app.
+- Confirmed empty input does not save a todo.
+
+### Technologies used
+- React Native
+- Expo SDK 58
+- Firebase
+- Cloud Firestore
