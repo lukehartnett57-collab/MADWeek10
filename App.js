@@ -95,7 +95,22 @@ await loadTodos();
           - If loading is false and todos is empty, show:
             <Text style={styles.empty}>No todos yet</Text>
       */}
-      <Text style={styles.empty}>List goes here</Text>
+      {loading ? (
+  <ActivityIndicator size="large" />
+) : todos.length === 0 ? (
+  <Text style={styles.empty}>No todos yet</Text>
+) : (
+  <FlatList
+    data={todos}
+    keyExtractor={(item) => item.id}
+    renderItem={({ item }) => (
+      <TodoItem
+        title={item.title}
+        completed={item.completed}
+      />
+    )}
+  />
+)}
     </SafeAreaView>
   );
 }
